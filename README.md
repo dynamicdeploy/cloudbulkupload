@@ -6,7 +6,7 @@
     <img src="https://raw.githubusercontent.com/iamirmasoud/bulkboto3/main/imgs/logo.png" alt="Logo" width="100" height="100">
   </a>
     
-  <h3 align="center">Bulk Boto3 (bulkboto3)</h3>
+  <h3 align="center">Cloud Bulk Upload (cloudbulkupload)</h3>
 
   <p align="center">
     Python package for fast and parallel transferring a bulk of files to S3 based on boto3!
@@ -15,17 +15,17 @@
     <a href="https://github.com/iamirmasoud/bulkboto3"><strong>Explore the docs »</strong></a>
     <br /> 
     -->
-    <a href="https://pypi.org/project/bulkboto3/">See on PyPI</a>
+    <a href="https://pypi.org/project/cloudbulkupload/">See on PyPI</a>
     ·
-    <a href="https://github.com/iamirmasoud/bulkboto3/blob/main/examples.py">View Examples</a>
+    <a href="https://github.com/dynamicdeploy/cloudbulkupload/blob/main/examples.py">View Examples</a>
     ·
-    <a href="https://github.com/iamirmasoud/bulkboto3/issues">Report Bug/Request Feature</a>
+    <a href="https://github.com/dynamicdeploy/cloudbulkupload/issues">Report Bug/Request Feature</a>
     
 
-![Python](https://img.shields.io/pypi/pyversions/bulkboto3.svg?style=flat&https://pypi.python.org/pypi/bulkboto3/)
-![Version](http://img.shields.io/pypi/v/bulkboto3.svg?style=flat&https://pypi.python.org/pypi/bulkboto3/)
-![License](http://img.shields.io/pypi/l/bulkboto3.svg?style=flat&https://github.com/iamirmasoud/bulkboto3/blob/main/LICENSE)
-[![Downloads](https://pepy.tech/badge/bulkboto3)](https://pepy.tech/project/bulkboto3)   
+![Python](https://img.shields.io/pypi/pyversions/cloudbulkupload.svg?style=flat&https://pypi.python.org/pypi/cloudbulkupload/)
+![Version](http://img.shields.io/pypi/v/cloudbulkupload.svg?style=flat&https://pypi.python.org/pypi/cloudbulkupload/)
+![License](http://img.shields.io/pypi/l/cloudbulkupload.svg?style=flat&https://github.com/dynamicdeploy/cloudbulkupload/blob/main/LICENSE)
+[![Downloads](https://pepy.tech/badge/cloudbulkupload)](https://pepy.tech/project/cloudbulkupload)   
 
 </p>
 </div>
@@ -53,7 +53,7 @@
   </ol>
 </details>
 
-## About bulkboto3
+## About cloudbulkupload
 [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) is the official Python SDK 
 for accessing and managing all AWS resources such as Amazon Simple Storage Service (S3). 
 Generally, it's pretty ok to transfer a small number of files using Boto3. However, transferring a large number of 
@@ -62,10 +62,10 @@ it can take up to hours to transfer hundreds of thousands, or millions, of files
 Moreover, because Amazon S3 does not have folders/directories, managing the hierarchy of directories and files 
 manually can be a bit tedious especially if there are many files located in different folders.
 
-The `bulkboto3` package solves these issues. It speeds up transferring of many small files to Amazon AWS S3 by 
+The `cloudbulkupload` package solves these issues. It speeds up transferring of many small files to Amazon AWS S3 by 
 executing multiple download/upload operations in parallel by leveraging the Python multiprocessing module. 
-Depending on the number of cores of your machine, Bulk Boto3 can make S3 transfers even 100X faster than sequential 
-mode using traditional Boto3! Furthermore, Bulk Boto3 can keep the original folder structure of files and 
+Depending on the number of cores of your machine, Cloud Bulk Upload can make S3 transfers even 100X faster than sequential 
+mode using traditional Boto3! Furthermore, Cloud Bulk Upload can keep the original folder structure of files and 
 directories when transferring them. There are also some other features as follows.
 
 ### Main Functionalities
@@ -74,6 +74,7 @@ directories when transferring them. There are also some other features as follow
   - Checking the existence of an object on the S3 bucket
   - Listing all objects on an S3 bucket
   - Creating a new bucket on the S3
+  - Configurable test suite with cleanup options
 
 ## Getting Started
 ### Prerequisites
@@ -86,10 +87,10 @@ You can deploy a free S3 server using [MinIO](https://min.io/)
 on your local machine by following the steps explained in: [Deploy Standalone MinIO using Docker Compose on Linux](http://www.sefidian.com/2022/04/08/deploy-standalone-minio-using-docker-compose/).
   
 ### Installation
-Use the package manager [pip](https://pypi.org/project/bulkboto3/) to install `bulkboto3`.
+Use the package manager [pip](https://pypi.org/project/cloudbulkupload/) to install `cloudbulkupload`.
 
 ```bash
-pip install bulkboto3
+pip install cloudbulkupload
 ```
 
 ## Usage
@@ -97,7 +98,7 @@ You can find the following scripts in [examples.py](https://github.com/iamirmaso
 
 #### Import and instantiate a `BulkBoto3` object with your credentials
 ```python
-from bulkboto3 import BulkBoto3
+from cloudbulkupload import BulkBoto3, StorageTransferPath
 TARGET_BUCKET = "test-bucket"
 NUM_TRANSFER_THREADS = 50
 TRANSFER_VERBOSITY = True

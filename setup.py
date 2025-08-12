@@ -9,24 +9,26 @@ from setuptools import find_namespace_packages, setup
 HERE = pathlib.Path(__file__).parent
 
 # Package meta-data.
-NAME = "bulkboto3"
+# Package meta-data.
+NAME = "cloudbulkupload"
 DESCRIPTION = "Python package for fast and parallel transferring a bulk of files to S3 based on boto3"
-URL = "https://github.com/iamirmasoud/bulkboto3"
-AUTHOR = "Amir Masoud Sefidian"
-AUTHOR_EMAIL = "amir.masoud.sefidian@gmail.com"
-REQUIRES_PYTHON = ">=3.6.0"
+URL = "https://github.com/dynamicdeploy/cloudbulkupload"
+AUTHOR = "Dynamic Deploy. Credit: Amir Masoud Sefidian"
+AUTHOR_EMAIL = "dynamicdeploy@gmail.com"
+REQUIRES_PYTHON = ">=3.11.0"
 # What packages are required for this module to be executed?
 REQUIRED = [
-    "boto3==1.21.26",
+    "boto3>=1.21.26",
     "tqdm",
 ]
+
 
 # What packages are optional?
 EXTRAS = {"dev": ["isort", "black"]}
 
 
 def get_version():
-    init = open(os.path.join(HERE, NAME, "__init__.py")).read()
+    init = open(os.path.join(HERE, "cloudbulkupload", "__init__.py")).read()
     return (
         re.compile(r"""__version__ = ['"]([0-9.]+)['"]""")
         .search(init)
@@ -54,7 +56,7 @@ setup(
     url=URL,
     license="MIT",
     python_requires=REQUIRES_PYTHON,
-    packages=find_namespace_packages(include=["bulkboto3"]),
+    packages=find_namespace_packages(include=["cloudbulkupload"]),
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
