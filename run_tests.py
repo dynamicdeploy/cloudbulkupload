@@ -30,8 +30,8 @@ def main():
     """Main test runner function."""
     parser = argparse.ArgumentParser(description="Run tests for cloudbulkupload")
     parser.add_argument(
-        "--type", 
-        choices=["unit", "performance", "all", "benchmark", "comparison", "quick"],
+        "--type",
+        choices=["unit", "performance", "all", "benchmark", "comparison", "quick", "azure-comparison", "three-way-comparison", "google-cloud"],
         default="unit",
         help="Type of tests to run"
     )
@@ -98,7 +98,7 @@ def main():
         # Run unit tests
         cmd = [sys.executable, "-m", "pytest", "tests/test_bulkboto3.py", "-m", "not slow"]
         if args.coverage:
-            cmd.extend(["--cov=bulkboto3", "--cov-report=html", "--cov-report=term"])
+            cmd.extend(["--cov=cloudbulkupload", "--cov-report=html", "--cov-report=term"])
         if args.verbose:
             cmd.append("-v")
         
@@ -116,7 +116,7 @@ def main():
         # Run all tests
         cmd = [sys.executable, "-m", "pytest", "tests/"]
         if args.coverage:
-            cmd.extend(["--cov=bulkboto3", "--cov-report=html", "--cov-report=term"])
+            cmd.extend(["--cov=cloudbulkupload", "--cov-report=html", "--cov-report=term"])
         if args.verbose:
             cmd.append("-v")
         
@@ -131,6 +131,21 @@ def main():
         # Run comparison tests
         cmd = [sys.executable, "tests/comparison_test.py"]
         success = run_command(cmd, "Comparison Tests")
+        
+    elif args.type == "azure-comparison":
+        # Run Azure vs AWS performance comparison
+        cmd = [sys.executable, "tests/performance_comparison.py"]
+        success = run_command(cmd, "Azure vs AWS Performance Comparison")
+        
+    elif args.type == "three-way-comparison":
+        # Run three-way performance comparison (AWS, Azure, Google)
+        cmd = [sys.executable, "tests/performance_comparison_three_way.py"]
+        success = run_command(cmd, "Three-Way Performance Comparison (AWS, Azure, Google)")
+    
+    elif args.type == "google-cloud":
+        # Run Google Cloud Storage test suite
+        cmd = [sys.executable, "tests/google_cloud_test.py"]
+        success = run_command(cmd, "Google Cloud Storage Test Suite")
         
     elif args.type == "quick":
         # Run quick test

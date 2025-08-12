@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-08-12 11:27:16",
+  "project_id": "plucky-paratext-468817-t2",
+  "tests": [
+    {
+      "test_name": "basic_operations",
+      "bucket_creation": true,
+      "file_upload": true,
+      "file_download": true,
+      "file_listing": true,
+      "file_deletion": true,
+      "bucket_deletion": true,
+      "errors": []
+    },
+    {
+      "test_name": "performance_upload",
+      "num_files": 20,
+      "file_size_mb": 5,
+      "total_size_mb": 100,
+      "concurrency_levels": [
+        {
+          "concurrency": 1,
+          "upload_time": 13.721387147903442,
+          "speed_mbps": 7.287892901941731,
+          "files_per_second": 1.4575785803883463
+        },
+        {
+          "concurrency": 5,
+          "upload_time": 15.489161968231201,
+          "speed_mbps": 6.456127207211301,
+          "files_per_second": 1.2912254414422601
+        },
+        {
+          "concurrency": 10,
+          "upload_time": 15.770752906799316,
+          "speed_mbps": 6.3408513589028805,
+          "files_per_second": 1.268170271780576
+        },
+        {
+          "concurrency": 20,
+          "upload_time": 15.765238046646118,
+          "speed_mbps": 6.343069461058592,
+          "files_per_second": 1.2686138922117183
+        },
+        {
+          "concurrency": 50,
+          "upload_time": 16.97427487373352,
+          "speed_mbps": 5.891267859385432,
+          "files_per_second": 1.1782535718770863
+        }
+      ],
+      "errors": []
+    },
+    {
+      "test_name": "transfer_manager_comparison",
+      "num_files": 20,
+      "file_size_mb": 5,
+      "total_size_mb": 100,
+      "cloudbulkupload_results": {
+        "upload_time": 13.111893892288208,
+        "speed_mbps": 7.62666330443806,
+        "files_per_second": 1.5253326608876119
+      },
+      "transfer_manager_results": {
+        "upload_time": 9.526193857192993,
+        "speed_mbps": 10.497371930395104,
+        "files_per_second": 2.099474386079021
+      },
+      "errors": []
+    },
+    {
+      "test_name": "error_handling",
+      "tests_passed": 3,
+      "tests_failed": 0,
+      "errors": []
+    }
+  ]
+}
