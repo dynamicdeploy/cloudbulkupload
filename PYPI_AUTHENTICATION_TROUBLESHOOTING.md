@@ -17,7 +17,7 @@ PyPI tokens must start with `pypi-` and be the complete token.
 #### **Solution**: Verify token format
 ```bash
 # Your token should look like this:
-pypi-AgEIcHlwaS5vcmcCJDIxNTg0Y2ZhLWNkZGItNGIzOC1hYzgyLWU4MTVmZTU2ZmM0NgACKlszLCIyMzFkYTE5ZS1lNjJiLTRjZjQtYjRkMy1lMTI5YTRkOTBmMjkiXQAABiDR_f8O2NzYklNHEVtK5xJm_o06w_nIZ_WuPNKvB0fyvwsource
+pypi-....
 ```
 
 ### **2. Token Scope Issues**
